@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>{{title}} | ckproof.io</title>
+
+    <!-- UTF-8 is the only officially compliant character encoding for webpages. -->
+    <meta charset="utf-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/fonts/iosevka-aile.css" />
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/ckproof.css" />
+
+    <!-- External libraries. -->
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			  crossorigin="anonymous"></script>
+    <script src="/static/js/modernizr-custom.js"></script>
+
+    <!-- Load MathJax if browser doesn't support MathML. -->
+    <script>
+      function loadMathJax() {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      // TODO: caniuse.com claims Safari supports MathML, but other sources give conflicting
+      // information on this. Test this claim.
+      if(!Modernizr.mathml) {
+        loadMathJax();
+      }
+    </script>
+
+    <!-- Makes it work with modile devices. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+
+    {% if header_has_border %}
+      <header class="border">
+    {% else %}
+      <header>
+    {% endif %}
+
+      {% block header %}
+      {% endblock header %}
+    </header>
+
+    <main class="content">
+      {% block content %}
+      {% endblock content %}
+    </main>
+
+    {% if footer_has_border %}
+      <footer class="border">
+    {% else %}
+      <footer>
+    {% endif %}
+
+      {% block footer %}
+      {% endblock footer %}
+
+      <p class="license">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">ckproof.io</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Alexander Isaacson</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+    </footer>
+  </body>
+</html>

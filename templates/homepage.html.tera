@@ -1,0 +1,57 @@
+{% extends "root.html.tera" %}
+
+{% block header %}
+  <hgroup>
+    <h1>ckproof.io</h1>
+  </hgroup>
+{% endblock header %}
+
+{% block content %}
+  <p>
+    This website, <a href="/">ckproof.io</a>, is an online treatise of mathematical proofs. There
+    are three things which make it unique:
+  </p>
+
+  <ol>
+    <li class="hoverable">
+      <b>Comprehensiveness:</b> The end goal of this project is to include a proof of every theorem
+      required to do modern mathematics.
+    </li>
+    <li class="hoverable">
+      <b>Verification:</b> Every proof is verified with an automated proof-checker. While this does
+      not <em>completely</em> guarantee that there are no errors, as software bugs do exist, it
+      <em>does</em> greatly reduce the chance of them occuring. In fact, the proof checker is likely
+      more accurate than peer review. As an added bonus, all proofs are necessarily unambiguous in
+      their notation and handwaving is impossible.
+    </li>
+    <li class="hoverable">
+      <b>Freedom:</b> The proof checker and the server which this site runs on are released under a
+      <a href="https://www.gnu.org/licenses/">GNU Affero General Public License Version 3 or
+      Later</a>, and the treatise is released under a
+      <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+      Attribution-Sharealike 4.0 International License</a>.
+    </li>
+  </ol>
+
+  <p>
+    The table of contents can be found <a href="/toc">here</a>.
+  </p>
+
+  <hgroup class="subsection">
+    <h1>Links</h1>
+  </hgroup>
+
+  <ul>
+    <li class="hoverable">The treatise can be found <a href="/toc">here</a>.</li>
+    <li class="hoverable">
+      Instructions for contributing to the project may be found <a href="/contributing">here</a>.
+    </li>
+    <li class="hoverable">
+      <a href="https://github.com/TopologicallySpeaking/ckproof">Fork me on GitHub uwu</a>.
+      (Coming Soon)
+    </li>
+    <li class="hoverable">
+      Create and check your own proofs <a class="broken">here</a>. (Coming <del>Soon</del> Someday)
+    </li>
+  </ul>
+{% endblock content %}

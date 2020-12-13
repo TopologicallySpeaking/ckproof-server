@@ -1,0 +1,526 @@
+html {
+  --theme-background: #121212;
+  --theme-background-hover: #202020;
+  --theme-foreground: #ABABAB;
+  --theme-emphasis: #00C568;
+
+  --theme-heading: #0A85CF;
+  --theme-hyperlink: #7BACF9;
+  --theme-hyperlink-hover: #AECDFF;
+  --theme-hyperlink-broken: #FE8E5D;
+  --theme-hyperlink-broken-hover: #F6C2AB;
+
+  --theme-table-head: #062130;
+  --theme-table-dark: #030025;
+  --theme-table-light: #0e0a3d;
+
+  --theme-block-enclosed: #FF748E;
+
+  --theme-math-op: #08C36B;
+  --theme-math-ident: #B2AF03;
+  --theme-math-var: #00B7FE;
+  --theme-math-important: #FB74FF;
+}
+
+body {
+  font-family: 'Iosevka Aile Web', sans-serif;
+  font-weight: 400;
+
+  color: var(--theme-foreground);
+  background-color: var(--theme-background);
+
+  max-width: 48rem;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+a {
+  color: var(--theme-hyperlink);
+}
+
+a:visited {
+  color: var(--theme-hyperlink);
+}
+
+a:not([href]) {
+  text-decoration: underline;
+}
+
+a.broken {
+  text-decoration: line-through;
+  color: var(--theme-hyperlink-broken);
+}
+
+.phantom {
+  visibility: hidden;
+}
+
+p {
+  line-height: 125%;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+p.license {
+  margin: 15px;
+  font-size: small;
+  text-align: center;
+}
+
+b {
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  color: var(--theme-emphasis);
+}
+
+i {
+  font-style: italic;
+}
+
+cite.block {
+  display: block;
+
+  margin: 15px 0;
+  border-radius: 3px;
+  padding: 3px 20px 3px 53px;
+
+  text-indent: -30px;
+  line-height: 125%;
+}
+
+main.content {
+  max-width: 40rem;
+  margin: 20px auto;
+}
+
+main > p {
+  margin: 15px 0;
+}
+
+main.todo > *:first-child {
+  margin-top: 0;
+}
+
+main.todo > *:last-child, main.struct > *:last-child {
+  margin-bottom: 0;
+}
+
+p.warning {
+  font-style: italic;
+}
+
+span.warning {
+  font-weight: 600;
+  font-variant: small-caps;
+  font-style: normal;
+  letter-spacing: 1px;
+  color: var(--theme-block-enclosed);
+}
+
+em {
+  font-style: italic;
+}
+
+figure {
+  margin: 40px 0;
+}
+
+figcaption {
+  margin-top: 10px;
+  text-align: center;
+}
+
+table {
+  border: 1px solid var(--theme-foreground);
+  margin: auto;
+}
+
+thead {
+  margin-bottom: 3px;
+  background-color: var(--theme-table-head);
+}
+
+tbody > tr:nth-child(even) {
+  background-color: var(--theme-table-light);
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: var(--theme-table-dark);
+}
+
+th, td {
+  padding: 3px 1em;
+}
+
+div.sublist {
+  display: grid;
+  grid-template-columns: auto 50px auto;
+  justify-items: center;
+  align-items: center;
+
+  margin: 15px 0;
+  border-radius: 3px;
+  padding: 3px;
+  overflow-x: auto;
+}
+
+span.sublist-var {
+  justify-self: end;
+}
+
+span.sublist-arrow {
+  color: var(--theme-math-important);
+}
+
+span.sublist-repl {
+  justify-self: start;
+}
+
+ol {
+  margin: 15px 0;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+ol ol {
+  margin: 0;
+  margin-left: 30px;
+}
+
+ul {
+  margin: 15px 0 15px 28px;
+  list-style-type: square;
+  list-style-position: inside;
+}
+
+li {
+  margin: 8px 0;
+  line-height: 125%;
+}
+
+li.hoverable {
+  border-radius: 3px;
+  padding: 3px;
+}
+
+li > .hoverable {
+  border-radius: 3px;
+  padding: 3px;
+}
+
+header > hgroup {
+  margin: 10px auto 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 2px 5px 10px;
+}
+
+header > hgroup > h1 {
+  margin-bottom: 10px;
+
+  font-size: xx-large;
+  font-weight: 700;
+  color: var(--theme-heading);
+
+  line-height: 110%;
+}
+
+hgroup > h2 {
+  margin: 5px 0;
+
+  font-size: x-large;
+  font-weight: 600;
+  color: var(--theme-heading);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 5px;
+  border-top: 1px solid var(--theme-heading);
+  border-bottom: 1px solid var(--theme-heading);
+  margin: 0 3px;
+}
+
+main.content > hgroup {
+  margin: 35px 0 15px;
+  border-bottom: 1px solid var(--theme-heading);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 3px 5px 4px;
+}
+
+main.content > hgroup > h1 {
+  margin: 5px 0;
+
+  color: var(--theme-heading);
+  font-size: x-large;
+  font-weight: 500;
+
+  line-height: 110%;
+}
+
+main.content > hgroup > h2 {
+  color: var(--theme-heading);
+  font-size: large;
+  font-weight: 500;
+
+  margin: 5px 0;
+}
+
+header.border {
+  border-bottom: 1px solid var(--theme-heading);
+}
+
+footer.border {
+  border-top: 1px solid var(--theme-heading);
+}
+
+article.struct {
+  padding: 10px;
+  border: 1px solid var(--theme-block-enclosed);
+  border-radius: 3px;
+  margin: 15px 5px;
+  break-inside: avoid;
+}
+
+article.struct > header {
+  color: var(--theme-block-enclosed);
+}
+
+dl.struct-info {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-row-gap: 3px;
+
+  border-radius: 3px;
+  padding: 3px;
+}
+
+dl.struct-info > dd {
+  padding-left: 1rem;
+}
+
+dl.struct-info > * {
+  font-size: small;
+  font-weight: 400;
+}
+
+dl.struct-info > *.name {
+  font-size: large;
+  font-weight: 500;
+}
+
+article.todo {
+  padding: 10px;
+  border: 1px solid var(--theme-block-enclosed);
+  border-radius: 3px;
+  margin: 15px 5px;
+  break-inside: aviod;
+}
+
+math.display {
+  border-radius: 3px;
+  padding: 3px;
+  text-align: left;
+}
+
+div.thm-assertion {
+  margin: 15px 0;
+  text-align: center;
+
+  overflow-x: auto;
+}
+
+div.display-math-outer {
+  margin: 15px 0;
+  text-align: center;
+}
+
+div.display-math {
+  display: inline-block;
+}
+
+mo {
+  color: var(--theme-math-op);
+}
+
+mo.var {
+  color: var(--theme-math-var);
+}
+
+mo.paren, mo.end {
+  color: var(--theme-foreground);
+}
+
+mo.turnstile {
+  color: var(--theme-math-important);
+}
+
+mi {
+  color: var(--theme-math-ident);
+}
+
+div.proof-step {
+  display: flex;
+  align-items: center;
+
+  margin-top: 15px;
+  border-radius: 3px;
+  padding: 3px;
+
+  overflow-x: auto;
+}
+
+math.proof-step {
+  text-align: left;
+}
+
+span.tag {
+  margin-right: 30px;
+}
+
+div.justification {
+  text-align: right;
+
+  margin-bottom: 15px;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+hr {
+  margin: 15px 0;
+  color: var(--theme-heading);
+}
+
+main.struct > hr {
+  color: var(--theme-block-enclosed);
+}
+
+span.unicorn {
+  font-variant: small-caps;
+  letter-spacing: 0.3em;
+}
+
+span.denoted {
+  font-weight: bold;
+  color: var(--theme-math-op);
+}
+
+span.next-prev {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--theme-hyperlink-hover);
+  }
+  
+  a.broken:hover {
+    color: var(--theme-hyperlink-broken-hover);
+  }
+
+  p:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  li.hoverable:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  dl.struct-info:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  math.display:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  div.proof-step:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  div.justification:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  div.sublist:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  cite.block:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  header > hgroup:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  main.content > hgroup:hover {
+    background-color: var(--theme-background-hover);
+  }
+}
+
+@media screen and (min-width: 450px) and (hover: hover) {
+  li > .hoverable:hover {
+    background-color: var(--theme-background-hover);
+  }
+}
+
+@media screen and (min-width: 450px) {
+  ol, ul {
+    list-style-position: outside;
+    margin-left: 55px;
+    margin-right: 35px;
+  }
+
+  li > .hoverable {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 38rem) {
+  header > hgroup {
+    margin: 10px 30px 0;
+  }
+
+  nav {
+    justify-content: space-around;
+
+    padding: 10px;
+  }
+
+  p, li {
+    text-align: justify;
+  }
+}
+
+@media screen and (prefers-color-scheme: light) {
+  html {
+    /* TODO: Rest of colors */
+    --theme-background: #f5f5f5;
+    --theme-background-hover: #e4e4e4;
+    --theme-foreground: #2e2e2e;
+    --theme-emphasis: #00542C;
+
+    --theme-heading: #0065A3;
+    --theme-hyperlink: #000883;
+    --theme-hyperlink-hover: #000FEF;
+    --theme-hyperlink-broken: #631F01;
+    --theme-hyperlink-broken-hover: #872C04;
+
+    --theme-table-head: #d6e6ff;
+    --theme-table-dark: #e2e0ff;
+    --theme-table-light: #e9e7fe;
+
+    --theme-block-enclosed: #AB0000;
+
+    --theme-math-op: #125602;
+    --theme-math-ident: #6b3402;
+    --theme-math-var: #000FEF;
+    --theme-math-important: #7700A3;
+  }
+}

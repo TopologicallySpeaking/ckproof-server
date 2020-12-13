@@ -1,0 +1,35 @@
+{% macro text(element) %}
+  {% if element.Mla %}
+    <cite class="block">
+      {{element.Mla.author}}. <i>{{element.Mla.title}}</i>.
+      {% for container in element.Mla.containers %}
+        {# TODO: Finish. #}
+        {{container.publisher}}, {{container.publication_date}}.
+      {% endfor %}
+    </cite>
+  {% elif element.Sublist %}
+    <div class="sublist">
+      {% for item in element.Sublist %}
+        <span class="sublist-var"><math>
+          <mo class="var">'</mo>
+          <mi>{{item.var_id}}</mi>
+        </math></span>
+        <span class="sublist-arrow">⟼</span>
+        <span class="sublist-repl"><math>
+          {{item.replacement | safe}}
+        </math></span>
+      {% endfor %}
+    </div>
+  {% elif element.DisplayMath %}
+    <div class="display-math-outer"><div class="display-math">
+      <math display="block" class="display">
+        {{element.DisplayMath.math | safe}}
+        <mo>{{element.DisplayMath.end}}</mo>
+      </math>
+    </div></div>
+  {% elif element.Paragraph %}
+    <p>
+      {{element.Paragraph | safe}}
+    </p>
+  {% endif %}
+{% endmacro text %}

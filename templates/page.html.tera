@@ -1,0 +1,339 @@
+{% extends "root.html.tera" %}
+
+{% import "macros.html.tera" as macros %}
+
+{% block header %}
+  <hgroup>
+    <h1>Chapter {{inner.chapter_num + 1}}: {{inner.chapter_name}}</h1>
+    <h2>Page {{inner.page_num + 1}}: {{inner.page_name}}</h2>
+  </hgroup>
+  <nav>
+    <a href="{{inner.prev_href}}">← Previous</a>
+    <a href="{{inner.up_href}}">↑ Up</a>
+    {% if inner.next_href %}
+      <a href="{{inner.next_href}}">Next →</a>
+    {% else %}
+      <a class="phantom">Next →</a>
+    {% endif %}
+  </nav>
+{% endblock header %}
+
+{% block content %}
+  {% for block in inner.blocks %}
+    {% if block.Text %}
+      {{ macros::text(element = block.Text) }}
+
+    {% elif block.Heading %}
+      <hgroup>
+        {% for heading in block.Heading %}
+          {% if heading.level == 1 %}
+            <h1>{{heading.content}}</h1>
+          {% elif heading.level == 2 %}
+            <h2>{{heading.content}}</h2>
+          {% elif heading.level == 3 %}
+            <h3>{{heading.content}}</h3>
+          {% endif %}
+        {% endfor %}
+      </hgroup>
+
+    {% elif block.System %}
+      <article class="struct" id="{{block.System.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">System:</dt>
+            <dd class="name">{{block.System.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.System.id}}</dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {{block.System.tagline | safe}}
+          </p>
+
+          {% if block.System.description %}
+            <hr />
+
+            {% for element in block.System.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
+    {% elif block.Type %}
+      <article class="struct" id="{{block.Type.system_id}}_{{block.Type.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Type:</dt>
+            <dd class="name">{{block.Type.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.Type.id}}</dd>
+
+            <dt>Parent System:</dt>
+            <dd>{{block.Type.system_name}} ({{block.Type.system_id}})</dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {{block.Type.tagline | safe}}
+          </p>
+
+          {% if block.Type.description %}
+            <hr />
+
+            {% for element in block.Type.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
+    {% elif block.Symbol %}
+      <article class="struct" id="{{block.Symbol.system_id}}_{{block.Symbol.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Symbol:</dt>
+            <dd class="name">{{block.Symbol.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.Symbol.id}}</dd>
+
+            <dt>Type:</dt>
+            <dd>{{block.Symbol.type_signature}}</dd>
+
+            <dt>Parent System:</dt>
+            <dd>
+              {{block.Symbol.system_name}}
+              ({{block.Symbol.system_id}})
+            </dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {% if block.Symbol.denoted %}
+              <span class="denoted">
+                (Denoted by
+                {% if block.Symbol.denoted.style == "Prefix" %}
+                  a prefix <math><mo>{{block.Symbol.denoted.example | safe}})</mo></math>
+                {% elif block.Symbol.denoted.style == "Infix" %}
+                  an infix <math><mo>{{block.Symbol.denoted.example | safe}})</mo></math>
+                {% elif block.Symbol.denoted.style == "Suffix" %}
+                  a suffix <math><mo>{{block.Symbol.denoted.example | safe}})</mo></math>
+                {% endif %}
+              </span>
+            {% endif %}
+            {{block.Symbol.tagline | safe}}
+          </p>
+
+          {% if block.Symbol.description %}
+            <hr />
+
+            {% for element in block.Symbol.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
+    {% elif block.Axiom %}
+      <article class="struct" id="{{block.Axiom.system_id}}_{{block.Axiom.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Axiom:</dt>
+            <dd class="name">{{block.Axiom.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.Axiom.id}}</dd>
+
+            <dt>Parent System:</dt>
+            <dd>{{block.Axiom.system_name}} ({{block.Axiom.system_id}})</dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {{block.Axiom.tagline | safe}}
+          </p>
+
+          <div class="thm-assertion">
+            <div class="display-math">
+              {% for premise in block.Axiom.premise %}
+                <math display="block" class="display">
+                  <mo class="phantom">⊢</mo>
+                  {{premise | safe}}
+                </math>
+              {% endfor %}
+
+              <math display="block" class="display">
+                <mo class="turnstile">⊢</mo>
+                {{block.Axiom.assertion | safe}}
+              </math>
+            </div>
+          </div>
+
+          {% if block.Axiom.description %}
+            <hr />
+
+            {% for element in block.Axiom.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
+    {% elif block.Theorem %}
+      <article class="struct" id="{{block.Theorem.system_id}}_{{block.Theorem.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Theorem:</dt>
+            <dd class="name">{{block.Theorem.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.Theorem.id}}</dd>
+
+            <dt>Parent System:</dt>
+            <dd>{{block.Theorem.system_name}} ({{block.Theorem.system_id}})</dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {{block.Theorem.tagline | safe}}
+          </p>
+
+          <div class="thm-assertion">
+            <div class="display-math">
+              {% for premise in block.Theorem.premise %}
+                <math display="block" class="display">
+                  <mo class="phantom">⊢</mo>
+                  {{premise | safe}}
+                </math>
+              {% endfor %}
+
+              <math display="block" class="display">
+                <mo class="turnstile">⊢</mo>
+                {{block.Theorem.assertion | safe}}
+              </math>
+            </div>
+          </div>
+
+          {% if block.Theorem.description %}
+            <hr />
+
+            {% for element in block.Theorem.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
+    {% elif block.Proof %}
+      <article class="struct">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Proof:</dt>
+            <dd class="name">{{block.Proof.theorem_name}}</dd>
+          </dl>
+          <p>
+            TODO: Link to more information.
+          </p>
+        </header>
+
+        <main class="struct">
+          {% for element in block.Proof.elements %}
+            {% if element.Text %}
+              {{ macros::text(element = element.Text) }}
+            {% elif element.Step %}
+              <div class="proof-step" id="{{element.Step.id}}">
+                <span class="tag">({{element.Step.tag}})</span>
+                <math display="block" class="proof-step">
+                  <mo class="turnstile">⊢</mo>
+                  {{element.Step.formula | safe}}
+                  <mo class="end">{{element.Step.end}}</mo>
+                </math>
+              </div>
+              <div class="justification">
+                By
+                <a href="{{element.Step.justification.href}}">
+                  {{element.Step.justification.name}}
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </main>
+      </article>
+
+    {% elif block.Table %}
+      <figure>
+        <table>
+          {% if block.Table.head %}
+            <thead>
+              {% for row in block.Table.head %}
+                <tr>
+                  {% for cell in row.cells %}
+                    <th>{{cell | safe}}</th>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </thead>
+          {% endif %}
+          {% if block.Table.body %}
+            <tbody>
+              {% for row in block.Table.body %}
+                <tr>
+                  {% for cell in row.cells %}
+                    <td>{{cell | safe}}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          {% endif %}
+          {% if block.Table.foot %}
+            <tfoot>
+              {% for row in block.Table.foot %}
+                <tr>
+                  {% for cell in row.cells %}
+                    <td>{{cell | safe}}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tfoot>
+          {% endif %}
+        </table>
+        {% if block.Table is containing("caption") %}
+          <figcaption>{{block.Table.caption | safe}}</figcaption>
+        {% endif %}
+      </figure>
+
+    {% elif block is containing("Todo") %}
+      <article class="todo">
+        <main class="todo">
+          <p class="warning">
+            <span class="warning">ToDo:</span> There is a piece of this page
+            which has not been written yet. There is a description of the issue
+            below. See <a href="/contributing">here</a> for instructions on how
+            you can help.
+          </p>
+
+          {% for element in block.Todo.elements %}
+            {{ macros::text(element=element) }}
+          {% endfor %}
+        </main>
+      </article>
+
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
+
+{% block footer %}
+  <nav>
+    <a href="{{inner.prev_href}}">← Previous</a>
+    <a href="{{inner.up_href}}">↑ Up</a>
+    {% if inner.next_href %}
+      <a href="{{inner.next_href}}">Next →</a>
+    {% else %}
+      <a class="phantom">Next →</a>
+    {% endif %}
+  </nav>
+{% endblock footer %}

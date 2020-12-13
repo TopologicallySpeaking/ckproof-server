@@ -1,0 +1,30 @@
+{% extends "root.html.tera" %}
+
+{% block header %}
+  <hgroup>
+    <h1>Contributing</h1>
+  </hgroup>
+{% endblock header %}
+
+{% block content %}
+  <p>
+    There are three repositories for this project hosted on GitHub. The proof-checker is found
+    <a href="https://github.com/TopologicallySpeaking/ckproof">here</a>, the server is found
+    <a href="https://github.com/TopologicallySpeaking/ckproof-server">here</a>, and the treatise is
+    found <a href="https://github.com/TopologicallySpeaking/ckproof-treatise">here</a>.
+  </p>
+
+  <p>
+    As of right now, I am not really looking for help on the proof checker or the treatise. It took
+    me about three years to figure out how the proof checker is supposed to work, and it's going to
+    take a while just to implement that plan. I will accept bug fixes, for example, but at this
+    stage things like feature requests are going to cause more issues than they solve.
+  </p>
+
+  <p>
+    However, the server and frontend are going to need some TLC. In particular, the
+    <a href="/toc">Table of Contents</a> is practically unusable. Furthermore, there is no way to
+    get to the homepage except by manually changing the url. If someone can fix this and save me the
+    trouble, that would be more than welcome.
+  </p>
+{% endblock content %}

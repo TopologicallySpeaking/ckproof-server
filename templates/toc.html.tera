@@ -1,0 +1,31 @@
+{% extends "root.html.tera" %}
+
+{% block header %}
+  <hgroup>
+    <h1>Table of Contents</h1>
+  </hgroup>
+{% endblock header %}
+
+{% block content %}
+  <ol>
+    {% for book in inner.books %}
+      <li>
+        <a href="{{book.href}}" class="hoverable">{{book.name}}</a>
+
+        <ol>
+          {% for chapter in book.chapters %}
+            <li>
+              <a href="{{chapter.href}}" class="hoverable">{{chapter.name}}</a>
+
+              <ol>
+                {% for page in chapter.pages %}
+                  <li><a href="{{page.href}}" class="hoverable">{{page.page_name}}</a></li>
+                {% endfor %}
+              </ol>
+            </li>
+          {% endfor %}
+        </ol>
+      </li>
+    {% endfor %}
+  </ol>
+{% endblock content %}
