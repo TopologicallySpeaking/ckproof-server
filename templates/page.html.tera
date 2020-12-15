@@ -255,9 +255,16 @@
               </div>
               <div class="justification">
                 By
-                <a href="{{element.Step.justification.href}}">
-                  {{element.Step.justification.name}}
-                </a>
+                {% if element.Step.justification.SystemChild %}
+                  <a
+                    href="{{element.Step.justification.SystemChild[1]}}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {{element.Step.justification.SystemChild[0]}}
+                  </a>
+                {% elif element.Step.justification.Hypothesis %}
+                  Hypothesis {{element.Step.justification.Hypothesis}}
+                {% endif %}
               </div>
             {% endif %}
           {% endfor %}
