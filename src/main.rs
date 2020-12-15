@@ -78,8 +78,8 @@ async fn page(
     PageData {
         title,
         inner: page,
-        header_has_border: true,
-        footer_has_border: true,
+        header_has_border: false,
+        footer_has_border: false,
     }
     .to_response("page.html.tera", tera)
 }
