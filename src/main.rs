@@ -2,7 +2,7 @@ use std::fs::File;
 
 use actix_files::NamedFile;
 use actix_web::middleware::Logger;
-use actix_web::{error, get, HttpRequest, web, App, Error, HttpResponse, HttpServer};
+use actix_web::{error, get, web, App, Error, HttpRequest, HttpResponse, HttpServer};
 
 use env_logger::Env;
 
@@ -139,9 +139,7 @@ async fn other(
     treatise: web::Data<DocumentRendered>,
     req: HttpRequest,
 ) -> Result<HttpResponse, Error> {
-    let favicon_files = [
-        "favicon.ico",
-    ];
+    let favicon_files = ["favicon.ico"];
 
     let p = req.match_info().get("p").unwrap().to_owned();
 
