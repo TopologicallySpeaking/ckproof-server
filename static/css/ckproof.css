@@ -209,6 +209,23 @@ li > .hoverable {
   padding: 3px;
 }
 
+blockquote {
+  margin: 15px 5px;
+  border-left: 1px solid var(--theme-block-enclosed);
+  padding: 3px;
+  padding-left: 30px;
+
+  font-style: italic;
+}
+
+blockquote > p {
+  text-align: left;
+}
+
+blockquote > p.original {
+  margin-bottom: 18px;
+}
+
 header > hgroup {
   margin: 10px auto 0;
   border-top-left-radius: 8px;

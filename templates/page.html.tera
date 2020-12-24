@@ -313,6 +313,18 @@
         {% endif %}
       </figure>
 
+    {% elif block.Quote %}
+      <blockquote>
+        {% if block.Quote.original %}
+          <p class="original">
+            {{block.Quote.original}}
+          </p>
+        {% endif %}
+        <p>
+          {{block.Quote.value}}
+        </p>
+      </blockquote>
+
     {% elif block is containing("Todo") %}
       <article class="todo">
         <main class="todo">

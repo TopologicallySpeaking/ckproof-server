@@ -546,6 +546,7 @@ dependencies = [
  "pest_derive",
  "serde",
  "serde_json",
+ "url",
 ]
 
 [[package]]
