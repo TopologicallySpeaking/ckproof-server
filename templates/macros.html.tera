@@ -1,11 +1,88 @@
+{% macro mla(mla) %}
+  {% if mla.author %}
+    {{ mla.author }}.
+  {% endif %}
+  {{ mla.title }}.
+  {% for container in mla.containers %}
+    {#
+      This variable is true if this element is the first one to be filled in the
+      container. If it's false, we will need a comma between them.
+    #}
+    {% set first = true %}
+
+    {% if container.container_title %}
+      {% set first = false %}
+      {{ container.container_title }}
+    {%- endif -%}
+
+    {%- if container.other_contributors -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.other_contributors }}
+    {%- endif -%}
+
+    {%- if container.version -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.version }}
+    {%- endif -%}
+
+    {%- if container.number -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.number }}
+    {%- endif -%}
+
+    {%- if container.publisher -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.publisher }}
+    {%- endif -%}
+
+    {%- if container.publication_date -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.publication_date }}
+    {%- endif -%}
+
+    {%- if container.location -%}
+      {%- if not first -%}
+        ,
+      {% else %}
+        {% set first = false %}
+      {% endif %}
+
+      {{ container.location }}
+    {%- endif -%}
+
+    .
+  {% endfor %}
+{% endmacro mla %}
+
 {% macro text(element) %}
   {% if element.Mla %}
     <cite class="block">
-      {{element.Mla.author}}. <i>{{element.Mla.title}}</i>.
-      {% for container in element.Mla.containers %}
-        {# TODO: Finish. #}
-        {{container.publisher}}, {{container.publication_date}}.
-      {% endfor %}
+      {{ self::mla(mla = element.Mla) }}
     </cite>
   {% elif element.Sublist %}
     <div class="sublist">
