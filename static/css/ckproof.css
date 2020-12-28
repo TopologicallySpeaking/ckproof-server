@@ -18,7 +18,7 @@ html {
 
   --theme-math-op: #08C36B;
   --theme-math-ident: #B2AF03;
-  --theme-math-var: #00B7FE;
+  --theme-math-const: #00B7FE;
   --theme-math-important: #FB74FF;
 }
 
@@ -365,7 +365,7 @@ mo {
 }
 
 mo.var {
-  color: var(--theme-math-var);
+  color: var(--theme-math-const);
 }
 
 mo.paren, mo.end {
@@ -378,6 +378,10 @@ mo.turnstile {
 
 mi {
   color: var(--theme-math-ident);
+}
+
+mn {
+  color: var(--theme-math-const);
 }
 
 div.proof-step {
@@ -517,7 +521,6 @@ span.next-prev {
 
 @media screen and (prefers-color-scheme: light) {
   html {
-    /* TODO: Rest of colors */
     --theme-background: #f5f5f5;
     --theme-background-hover: #e4e4e4;
     --theme-foreground: #2e2e2e;
@@ -537,7 +540,7 @@ span.next-prev {
 
     --theme-math-op: #125602;
     --theme-math-ident: #6b3402;
-    --theme-math-var: #000FEF;
+    --theme-math-const: #000FEF;
     --theme-math-important: #7700A3;
   }
 }
