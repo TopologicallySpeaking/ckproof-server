@@ -51,6 +51,13 @@ a.broken {
   color: var(--theme-hyperlink-broken);
 }
 
+a.reference {
+  font-size: 60%;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.5em;
+}
+
 .phantom {
   visibility: hidden;
 }
@@ -295,6 +302,16 @@ footer.border {
   border-top: 1px solid var(--theme-heading);
 }
 
+footer > h1.references {
+  border-top: 1px solid var(--theme-heading);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 10px 17px;
+
+  color: var(--theme-heading);
+  font-size: x-large;
+}
+
 article.struct {
   padding: 10px;
   border: 1px solid var(--theme-block-enclosed);
@@ -481,6 +498,10 @@ span.next-prev {
   }
 
   main.content > hgroup:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  footer > h1.references:hover {
     background-color: var(--theme-background-hover);
   }
 }

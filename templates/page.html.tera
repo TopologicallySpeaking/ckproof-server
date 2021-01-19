@@ -317,11 +317,13 @@
       <blockquote>
         {% if block.Quote.original %}
           <p class="original">
-            {{block.Quote.original}}
+            {{block.Quote.original.quote -}}
+            <a href="#ref{{block.Quote.original.local_bib_ref + 1}}" class="reference">[{{block.Quote.original.local_bib_ref + 1}}]</a>
           </p>
         {% endif %}
         <p>
-          {{block.Quote.value}}
+          {{block.Quote.value.quote -}}
+            <a href="#ref{{block.Quote.value.local_bib_ref + 1}}" class="reference">[{{block.Quote.value.local_bib_ref + 1}}]</a>
         </p>
       </blockquote>
 
@@ -346,6 +348,15 @@
 {% endblock content %}
 
 {% block footer %}
+  {% if inner.local_bibliography %}
+    <h1 class="references">Works Cited</h1>
+    <ol class="bibliography">
+      {% for citation in inner.local_bibliography %}
+          <li class="hoverable" id="ref{{loop.index}}">{{ macros::mla(mla=citation) }}</li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+
   <nav>
     <a href="{{inner.prev_href}}">← Previous</a>
     <a href="{{inner.up_href}}">↑ Up</a>
