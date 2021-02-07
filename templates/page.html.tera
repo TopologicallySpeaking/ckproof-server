@@ -138,6 +138,59 @@
         </main>
       </article>
 
+    {% elif block.Definition %}
+      <article class="struct" id="{{block.Definition.system_id}}_{{block.Definition.id}}">
+        <header>
+          <dl class="struct-info">
+            <dt class="name">Definition:</dt>
+            <dd class="name">{{block.Definition.name}}</dd>
+
+            <dt>ID:</dt>
+            <dd>{{block.Definition.id}}</dd>
+
+            <dt>Type:</dt>
+            <dd>{{block.Definition.type_signature}}</dd>
+
+            <dt>Parent System:</dt>
+            <dd>
+              {{block.Definition.system_name}}
+              ({{block.Definition.system_id}})
+            </dd>
+          </dl>
+        </header>
+        <main class="struct">
+          <p>
+            {% if block.Definition.denoted %}
+              <span class="denoted">
+                (Denoted by
+                {% if block.Definition.denoted.style == "Prefix" %}
+                  a prefix <math><mo>{{block.Definition.denoted.example | safe}})</mo></math>
+                {% elif block.Definition.denoted.style == "Infix" %}
+                  an infix <math><mo>{{block.Definition.denoted.example | safe}})</mo></math>
+                {% elif block.Definition.denoted.style == "Suffix" %}
+                  a suffix <math><mo>{{block.Definition.denoted.example | safe}})</mo></math>
+                {% endif %}
+              </span>
+            {%endif %}
+            {{block.Definition.tagline | safe}}
+          </p>
+
+          <math display="block" class="display">
+            {{block.Definition.example | safe}}
+            <mo class="relation">≝</mo>
+            {{block.Definition.expanded | safe}}
+          </math>
+
+          {% if block.Definition.description %}
+            <hr />
+
+            {% for element in block.Definition.description %}
+              {{ macros::text(element = element) }}
+            {% endfor %}
+          {% endif %}
+        </main>
+      </article>
+
     {% elif block.Axiom %}
       <article class="struct" id="{{block.Axiom.system_id}}_{{block.Axiom.id}}">
         <header>
@@ -264,6 +317,8 @@
                   </a>
                 {% elif element.Step.justification.Hypothesis %}
                   Hypothesis {{element.Step.justification.Hypothesis}}
+                {% elif element.Step.justification == "Definition" %}
+                  Definition
                 {% endif %}
               </div>
             {% endif %}
