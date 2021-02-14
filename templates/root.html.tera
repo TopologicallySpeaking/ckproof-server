@@ -17,7 +17,7 @@
 			  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
 			  crossorigin="anonymous"></script>
-    <script src="/static/js/modernizr-custom.js"></script>
+    <script defer src="/static/js/modernizr-custom.js"></script>
 
     <!-- Load MathJax if browser doesn't support MathML. -->
     <script>
@@ -27,7 +27,9 @@
         script.async = true;
         document.head.appendChild(script);
       }
+    </script>
 
+    <script defer>
       if(!Modernizr.mathml) {
         loadMathJax();
       }
