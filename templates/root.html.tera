@@ -28,8 +28,6 @@
         document.head.appendChild(script);
       }
 
-      // TODO: caniuse.com claims Safari supports MathML, but other sources give conflicting
-      // information on this. Test this claim.
       if(!Modernizr.mathml) {
         loadMathJax();
       }
