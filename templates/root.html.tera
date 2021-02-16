@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="/static/css/ckproof.css" />
 
     <!-- External libraries. -->
+    <script
+			  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			  crossorigin="anonymous"></script>
     <script defer src="/static/js/modernizr-custom.js"></script>
 
     <!-- Load MathJax if browser doesn't support MathML. -->
@@ -40,10 +44,12 @@
       }
     </script>
 
-    <script defer>
-      if(!Modernizr.mathml) {
-        loadMathJax();
-      }
+    <script>
+      $(function() {
+        if(!Modernizr.mathml) {
+          loadMathJax();
+        }
+      })
     </script>
 
     <!-- Makes it work with modile devices. -->
