@@ -225,21 +225,31 @@
             {{block.Axiom.tagline | safe}}
           </p>
 
-          <div class="thm-assertion">
-            <div class="display-math">
-              {% for premise in block.Axiom.premise %}
-                <math display="block" class="display">
-                  <mo class="phantom">⊢</mo>
-                  {{premise | safe}}
-                </math>
-              {% endfor %}
+          <table class="thm-formulas">
+            {% for premise in block.Axiom.premise %}
+              <tr>
+                <td class="tag">({{loop.index}})</td>
+                <td class="formula">
+                  <math display="block" class="premise">
+                    {{premise | safe}}
+                  </math>
+                </td>
+              </tr>
+            {% endfor %}
 
-              <math display="block" class="display">
-                <mo class="turnstile">⊢</mo>
-                {{block.Axiom.assertion | safe}}
-              </math>
-            </div>
-          </div>
+            <tr>
+              <td class="tag">
+                <math>
+                  <mo class="turnstile">⊢</mo>
+                </math>
+              </td>
+              <td class="formula">
+                <math display="block" class="assertion">
+                  {{block.Axiom.assertion | safe}}
+                </math>
+              </td>
+            </tr>
+          </table>
 
           {% if block.Axiom.description %}
             <hr />
@@ -270,21 +280,31 @@
             {{block.Theorem.tagline | safe}}
           </p>
 
-          <div class="thm-assertion">
-            <div class="display-math">
-              {% for premise in block.Theorem.premise %}
-                <math display="block" class="display">
-                  <mo class="phantom">⊢</mo>
-                  {{premise | safe}}
-                </math>
-              {% endfor %}
+          <table class="thm-formulas">
+            {% for premise in block.Theorem.premise %}
+              <tr>
+                <td class="tag">({{loop.index}})</td>
+                <td class="formula">
+                  <math display="block" class="premise">
+                    {{premise | safe}}
+                  </math>
+                </td>
+              </tr>
+            {% endfor %}
 
-              <math display="block" class="display">
-                <mo class="turnstile">⊢</mo>
-                {{block.Theorem.assertion | safe}}
-              </math>
-            </div>
-          </div>
+            <tr>
+              <td class="tag">
+                <math>
+                  <mo class="turnstile">⊢</mo>
+                </math>
+              </td>
+              <td class="formula">
+                <math display="block" class="assertion">
+                  {{block.Theorem.assertion | safe}}
+                </math>
+              </td>
+            </tr>
+          </table>
 
           {% if block.Theorem.description %}
             <hr />
@@ -316,9 +336,10 @@
               <div class="proof-step" id="{{element.Step.id}}">
                 <span class="tag">({{element.Step.tag}})</span>
                 <math display="block" class="proof-step">
-                  <mo class="turnstile">⊢</mo>
-                  {{element.Step.formula | safe}}
-                  <mo class="end">{{element.Step.end}}</mo>
+                  <mrow>
+                    {{element.Step.formula | safe}}
+                    <mo class="end">{{element.Step.end}}</mo>
+                  </mrow>
                 </math>
               </div>
               <div class="justification">

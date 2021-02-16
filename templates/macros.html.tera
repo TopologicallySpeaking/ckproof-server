@@ -113,12 +113,12 @@
       {% endfor %}
     </div>
   {% elif element.DisplayMath %}
-    <div class="display-math-outer"><div class="display-math">
-      <math display="block" class="display">
+    <math display="block" class="display">
+      <mrow>
         {{element.DisplayMath.math | safe}}
-        <mo>{{element.DisplayMath.end}}</mo>
-      </math>
-    </div></div>
+        <mo class="end">{{element.DisplayMath.end}}</mo>
+      </mrow>
+    </math>
   {% elif element.Paragraph %}
     <p>
       {{element.Paragraph | safe}}

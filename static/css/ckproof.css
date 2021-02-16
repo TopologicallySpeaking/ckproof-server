@@ -153,26 +153,43 @@ figcaption {
   text-align: center;
 }
 
-table {
+figure table {
   border: 1px solid var(--theme-foreground);
   margin: auto;
 }
 
-thead {
+figure thead {
   margin-bottom: 3px;
   background-color: var(--theme-table-head);
 }
 
-tbody > tr:nth-child(even) {
+figure tbody tr:nth-child(even) {
   background-color: var(--theme-table-light);
 }
 
-tbody > tr:nth-child(odd) {
+figure tbody tr:nth-child(odd) {
   background-color: var(--theme-table-dark);
 }
 
-th, td {
+figure th, figure td {
   padding: 3px 1em;
+}
+
+table.thm-formulas {
+  margin: auto;
+}
+
+table.thm-formulas td.tag {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 3px;
+  text-align: center;
+}
+
+table.thm-formulas td.formula {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 3px 15px;
 }
 
 div.sublist {
@@ -373,23 +390,6 @@ article.todo {
 math.display {
   border-radius: 3px;
   padding: 3px;
-  text-align: left;
-}
-
-div.thm-assertion {
-  margin: 15px 0;
-  text-align: center;
-
-  overflow-x: auto;
-}
-
-div.display-math-outer {
-  margin: 15px 0;
-  text-align: center;
-}
-
-div.display-math {
-  display: inline-block;
 }
 
 mo {
@@ -485,6 +485,10 @@ span.next-prev {
   }
 
   dl.struct-info:hover {
+    background-color: var(--theme-background-hover);
+  }
+
+  table.thm-formulas tr:hover td {
     background-color: var(--theme-background-hover);
   }
 
