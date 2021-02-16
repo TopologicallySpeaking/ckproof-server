@@ -42,7 +42,7 @@ Optionally, a different address or port may be used by passing the `BIND_ADDR`
 environment variable.
 
 ```shell
-BAND_ADDR=127.0.0.1:1337 cargo run
+BIND_ADDR=127.0.0.1:1337 cargo run
 ```
 
 ## Contributing
