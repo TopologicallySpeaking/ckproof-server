@@ -4,8 +4,8 @@ This is the server which runs [ckproof.io](http://ckproof.io/).
 
 ## Building
 
-This server uses Cargo as a build system. As of right now, the easiest way to
-download the necessary files is through git.
+This server uses Rust Nightly and Cargo as a build system. As of right now, the
+easiest way to download the necessary files is through git.
 
 ```shell
 mkdir ckproof && cd ckproof
