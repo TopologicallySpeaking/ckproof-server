@@ -173,6 +173,8 @@ figure tbody tr:nth-child(odd) {
 
 figure th, figure td {
   padding: 3px 1em;
+
+  text-align: center;
 }
 
 table.thm-formulas {
