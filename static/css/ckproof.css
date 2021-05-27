@@ -402,7 +402,7 @@ mo.var {
   color: var(--theme-math-const);
 }
 
-mo.paren, mo.end, mo.relation {
+mo.paren, mo.end, mo.relation, mo.separator {
   color: var(--theme-foreground);
 }
 
