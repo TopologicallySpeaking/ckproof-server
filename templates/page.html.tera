@@ -364,6 +364,23 @@
         </main>
       </article>
 
+    {% elif block.List %}
+      {% if block.List.ordered %}
+        <ol>
+      {% else %}
+        <ul>
+      {% endif %}
+      
+      {% for item in block.List.items %}
+        <li>{{item}}</li>
+      {% endfor %}
+
+      {% if block.List.ordered %}
+        </ol>
+      {% else %}
+        </ul>
+      {% endif %}
+
     {% elif block.Table %}
       <figure>
         <table>
