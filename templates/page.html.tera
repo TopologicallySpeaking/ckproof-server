@@ -265,7 +265,7 @@
       <article class="struct" id="{{block.Theorem.system_id}}_{{block.Theorem.id}}">
         <header>
           <dl class="struct-info">
-            <dt class="name">Theorem:</dt>
+            <dt class="name">{{block.Theorem.kind}}:</dt>
             <dd class="name">{{block.Theorem.name}}</dd>
 
             <dt>ID:</dt>
