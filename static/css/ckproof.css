@@ -328,6 +328,13 @@ main.content > hgroup > h2 {
   margin: 5px 0;
 }
 
+main.content > hgroup > h3 {
+  color: var(--theme-heading);
+  font-weight: 500;
+  
+  margin: 5px 0;
+}
+
 header.border {
   border-bottom: 1px solid var(--theme-heading);
 }
