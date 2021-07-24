@@ -355,8 +355,8 @@
                   Hypothesis {{element.Step.justification.Hypothesis}}
                 {% elif element.Step.justification == "Definition" %}
                   Definition
-                {% elif element.Step.justification == "Substitution" %}
-                  Substitution
+                {% elif element.Step.justification == "FunctionApplication" %}
+                  Function Application
                 {% endif %}
               </div>
             {% endif %}
