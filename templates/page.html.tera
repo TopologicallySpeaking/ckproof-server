@@ -357,6 +357,8 @@
                   Definition
                 {% elif element.Step.justification == "FunctionApplication" %}
                   Function Application
+                {% elif element.Step.justification == "Substitution" %}
+                  Substitution
                 {% endif %}
               </div>
             {% endif %}
